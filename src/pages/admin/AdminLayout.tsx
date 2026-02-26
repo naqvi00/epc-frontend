@@ -38,7 +38,7 @@ export default function AdminLayout() {
 
   function logout() {
     clearToken();
-    nav("/admin/login");
+    nav("/epc-admin-92f3/login");
   }
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
