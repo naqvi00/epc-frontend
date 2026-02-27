@@ -18,7 +18,7 @@ import clsx from "clsx";
 
 import { brand, sampleInsights, topics, regions } from "../content/site";
 import StatsOnView from "../components/home/StatsOnView";
-import mainPic from "../assets/media1.png"
+import mainPic from "../assets/group.png"
 /* =========================
    TYPES + CONSTANTS
 ========================= */
