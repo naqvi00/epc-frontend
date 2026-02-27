@@ -289,18 +289,18 @@ export default function Governance() {
     'Public Policy',
   ],
 },
-{
-  name: 'Dr. Olga Podberezkina',
-  image: olga, // make sure you import this image as `olga`
-  title: 'Advisory Council',
-  location: 'Eurasia / International Relations',
-  short: 'Political scientist specialising in Eurasian geopolitics, geoeconomics, Arctic strategy and international transport corridors.',
-  long: clampWords(
-    'Dr. Olga Podberezkina is a political scientist specialising in Eurasian geopolitics, international transport corridors, Arctic development and geoeconomic strategy. From 2021 to 2025, she served as Vice-Rector for International Relations at Mordovian State University, leading internationalisation strategy, expanding English-language programmes and strengthening global partnerships. Previously, she was Deputy Director of International Relations at the Ministry of Education of the Russian Federation, overseeing cooperation projects across Central Asia, the Middle East and Southeast Asia, and participating in multilateral initiatives. She has authored 40+ publications on the Northern Sea Route, Arctic strategy, the Belt and Road Initiative and Eurasian integration, and has lectured at MGIMO on infrastructure geopolitics. She holds a PhD in Political Science from MGIMO and speaks Russian (native), English, French and German.',
-    75,
-  ),
-  tags: ['Eurasian Geopolitics', 'Geoeconomics', 'Arctic Strategy', 'Transport Corridors', 'International Relations'],
-},
+// {
+//   name: 'Dr. Olga Podberezkina',
+//   image: olga, // make sure you import this image as `olga`
+//   title: 'Advisory Council',
+//   location: 'Eurasia / International Relations',
+//   short: 'Political scientist specialising in Eurasian geopolitics, geoeconomics, Arctic strategy and international transport corridors.',
+//   long: clampWords(
+//     'Dr. Olga Podberezkina is a political scientist specialising in Eurasian geopolitics, international transport corridors, Arctic development and geoeconomic strategy. From 2021 to 2025, she served as Vice-Rector for International Relations at Mordovian State University, leading internationalisation strategy, expanding English-language programmes and strengthening global partnerships. Previously, she was Deputy Director of International Relations at the Ministry of Education of the Russian Federation, overseeing cooperation projects across Central Asia, the Middle East and Southeast Asia, and participating in multilateral initiatives. She has authored 40+ publications on the Northern Sea Route, Arctic strategy, the Belt and Road Initiative and Eurasian integration, and has lectured at MGIMO on infrastructure geopolitics. She holds a PhD in Political Science from MGIMO and speaks Russian (native), English, French and German.',
+//     75,
+//   ),
+//   tags: ['Eurasian Geopolitics', 'Geoeconomics', 'Arctic Strategy', 'Transport Corridors', 'International Relations'],
+// },
 
    
   ]
