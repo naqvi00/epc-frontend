@@ -68,7 +68,7 @@ export default function EventsLanding() {
                   to="/events/upcoming"
                   className="rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800"
                 >
-                  Register (sample)
+                  Register
                 </Link>
                 <Link
                   to="/events/past"
