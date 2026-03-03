@@ -1,64 +1,112 @@
-import PageHeader from '../../components/ui/PageHeader'
-import { sampleEvents } from '../../content/site'
+import { useEffect, useState } from "react";
+import PageHeader from "../../components/ui/PageHeader";
+import { apiFetch } from "../../api/api";
+
+type EventItem = {
+  _id: string;
+  title: string;
+  date: string;
+  location: string;
+  format: string;
+  imageUrl?: string;
+};
 
 export default function UpcomingEvents() {
+  const [events, setEvents] = useState<EventItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  async function load() {
+    try {
+      const data = await apiFetch<EventItem[]>("/api/events/public");
+      setEvents(data);
+    } catch (e: any) {
+      setError(e.message || "Failed to load events");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    load();
+  }, []);
+
   return (
     <main className="bg-white">
       <PageHeader
-       variant="gradient"
+        variant="gradient"
         eyebrow="Events"
         title="Upcoming events"
-        description="Register for upcoming briefings, webinars and closed-door dialogues. This is demo data for client preview."
+        description="Register for upcoming briefings, webinars and closed-door dialogues."
         crumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Events', href: '/events' },
-          { label: 'Upcoming' },
+          { label: "Home", href: "/" },
+          { label: "Events", href: "/events" },
+          { label: "Upcoming" },
         ]}
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-6 md:grid-cols-2">
-          {sampleEvents.map((e) => (
-            <article key={e.title} className="rounded-2xl border border-brand-line bg-white p-6 shadow-sm">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2 className="font-heading text-xl font-semibold text-slate-900">{e.title}</h2>
-                  <p className="mt-2 text-sm text-slate-700">
-                    <span className="font-medium">{e.date}</span> · {e.format} · {e.location}
+        {loading ? (
+          <div className="text-sm text-slate-600">Loading events…</div>
+        ) : error ? (
+          <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+            {error}
+          </div>
+        ) : events.length === 0 ? (
+          <div className="text-sm text-slate-600">No upcoming events.</div>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2">
+            {events.map((e) => (
+              <article
+                key={e._id}
+                className="overflow-hidden rounded-2xl border border-brand-line bg-white shadow-sm"
+              >
+                {/* ✅ Event Image */}
+{e.imageUrl ? (
+  <div className="relative bg-slate-50">
+    <img
+      src={e.imageUrl}
+      alt={e.title}
+      className="h-80 w-full object-contain"
+      loading="lazy"
+    />
+
+    {/* Format badge on image */}
+    <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800 shadow-sm">
+      {e.format}
+    </div>
+  </div>
+) : null}
+
+                <div className="p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h2 className="font-heading text-xl font-semibold text-slate-900">
+                        {e.title}
+                      </h2>
+
+                      <p className="mt-2 text-sm text-slate-700">
+                        <span className="font-medium">{e.date}</span> · {e.format} · {e.location}
+                      </p>
+                    </div>
+
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
+                      Upcoming
+                    </span>
+                  </div>
+
+                  <p className="mt-4 text-sm text-slate-700">
+                    Stay informed and join our upcoming engagement. Registration details will be shared soon.
                   </p>
+
                 </div>
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">Upcoming</span>
-              </div>
+              </article>
+            ))}
+          </div>
+        )}
 
-              <p className="mt-4 text-sm text-slate-700">
-                Placeholder summary. Replace this with your CMS event summary, agenda, speakers, and registration rules.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#"
-                  className="rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white shadow-sm hover:bg-slate-800"
-                >
-                  Register (sample)
-                </a>
-                <a
-                  href="#"
-                  className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50"
-                >
-                  View agenda
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-10 rounded-2xl border border-brand-line bg-slate-50 p-6">
-          <p className="text-sm text-slate-700">
-            Notes: event detail pages are not enabled in this demo. You can add dynamic routes later (e.g. /events/:slug)
-            when your CMS is ready.
-          </p>
-        </div>
+      
       </section>
     </main>
-  )
+  );
 }
