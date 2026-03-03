@@ -4,9 +4,10 @@ import { apiFetch } from "../../api/api";
 type EventItem = {
   _id: string;
   title: string;
-  date: string;       // keep as string (YYYY-MM-DD)
+  date: string;
   location: string;
-  format: string;     // In-person / Online / Hybrid
+  format: string;
+  imageUrl?: string;
   isPublished: boolean;
   sortOrder: number;
   createdAt?: string;
@@ -18,8 +19,18 @@ const emptyForm = {
   date: "",
   location: "",
   format: "In-person",
+  imageUrl: "",
   isPublished: true,
   sortOrder: 0,
+};
+
+type CloudinarySignResponse = {
+  timestamp: number;
+  signature: string;
+  cloudName: string;
+  apiKey: string;
+  uploadPreset: string;
+  folder: string;
 };
 
 export default function AdminEvents() {
@@ -64,6 +75,7 @@ export default function AdminEvents() {
       date: item.date,
       location: item.location,
       format: item.format,
+      imageUrl: item.imageUrl || "",
       isPublished: item.isPublished,
       sortOrder: item.sortOrder ?? 0,
     });
@@ -73,6 +85,35 @@ export default function AdminEvents() {
   function resetForm() {
     setEditId(null);
     setForm({ ...emptyForm });
+  }
+
+  // ✅ Your signed upload flow
+  async function getCloudinarySignature(): Promise<CloudinarySignResponse> {
+    return apiFetch<CloudinarySignResponse>("/api/admin/cloudinary/sign", {
+      method: "POST",
+      body: JSON.stringify({ folder: "epc/events" }),
+    });
+  }
+
+  async function uploadToCloudinary(file: File): Promise<string> {
+    const sig = await getCloudinarySignature();
+
+    const fd = new FormData();
+    fd.append("file", file);
+    fd.append("api_key", sig.apiKey);
+    fd.append("timestamp", String(sig.timestamp));
+    fd.append("signature", sig.signature);
+    fd.append("upload_preset", sig.uploadPreset);
+    fd.append("folder", sig.folder);
+
+    const resp = await fetch(`https://api.cloudinary.com/v1_1/${sig.cloudName}/image/upload`, {
+      method: "POST",
+      body: fd,
+    });
+
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data?.error?.message || "Image upload failed");
+    return data.secure_url;
   }
 
   async function submitForm(e: React.FormEvent) {
@@ -132,7 +173,6 @@ export default function AdminEvents() {
     if (!ok) return;
 
     setError(null);
-    // optimistic remove
     const prev = items;
     setItems((p) => p.filter((x) => x._id !== item._id));
 
@@ -246,6 +286,51 @@ export default function AdminEvents() {
               onChange={(e) => setForm((p) => ({ ...p, sortOrder: Number(e.target.value) }))}
             />
           </div>
+
+          {/* ✅ Image upload (SIGNED) */}
+          <div className="md:col-span-2">
+            <label className="text-sm font-semibold text-slate-700">Event Image</label>
+
+            <div className="mt-1 flex flex-col gap-3 md:flex-row md:items-center">
+              <input
+                type="file"
+                accept="image/*"
+                className="w-full rounded-xl border border-brand-line px-3 py-2 text-sm"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+
+                  setSaving(true);
+                  setError(null);
+                  try {
+                    const url = await uploadToCloudinary(file);
+                    setForm((p) => ({ ...p, imageUrl: url }));
+                  } catch (err: any) {
+                    setError(err.message || "Image upload failed");
+                  } finally {
+                    setSaving(false);
+                  }
+                }}
+              />
+
+              {form.imageUrl ? (
+                <div className="flex items-center gap-3">
+                  <img
+                    src={form.imageUrl}
+                    alt="Event"
+                    className="h-16 w-16 rounded-xl border border-brand-line object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setForm((p) => ({ ...p, imageUrl: "" }))}
+                    className="rounded-xl border border-brand-line px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-brand-mist"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
 
         <div className="mt-4 flex gap-3">
@@ -281,23 +366,29 @@ export default function AdminEvents() {
         ) : (
           <div className="mt-3 space-y-3">
             {sorted.map((e) => (
-              <div
-                key={e._id}
-                className="rounded-2xl border border-brand-line bg-white p-4"
-              >
+              <div key={e._id} className="rounded-2xl border border-brand-line bg-white p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <div className="font-body text-sm font-semibold text-slate-900">{e.title}</div>
-                    <div className="mt-1 font-body text-xs text-slate-600">
-                      {e.date} • {e.location} • {e.format}
-                    </div>
-                    <div className="mt-2 text-xs text-slate-500">
-                      sortOrder: <span className="font-semibold">{e.sortOrder ?? 0}</span>
-                      {" "}•{" "}
-                      status:{" "}
-                      <span className={e.isPublished ? "font-semibold text-emerald-700" : "font-semibold text-slate-500"}>
-                        {e.isPublished ? "Published" : "Unpublished"}
-                      </span>
+                  <div className="flex items-start gap-3">
+                    {e.imageUrl ? (
+                      <img
+                        src={e.imageUrl}
+                        alt={e.title}
+                        className="h-12 w-12 rounded-xl border border-brand-line object-cover"
+                        loading="lazy"
+                      />
+                    ) : null}
+
+                    <div>
+                      <div className="font-body text-sm font-semibold text-slate-900">{e.title}</div>
+                      <div className="mt-1 font-body text-xs text-slate-600">
+                        {e.date} • {e.location} • {e.format}
+                      </div>
+                      <div className="mt-2 text-xs text-slate-500">
+                        sortOrder: <span className="font-semibold">{e.sortOrder ?? 0}</span> • status:{" "}
+                        <span className={e.isPublished ? "font-semibold text-emerald-700" : "font-semibold text-slate-500"}>
+                          {e.isPublished ? "Published" : "Unpublished"}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
