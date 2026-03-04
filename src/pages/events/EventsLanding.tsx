@@ -8,7 +8,7 @@ export default function EventsLanding() {
       <PageHeader
        variant="gradient"
         eyebrow="Events"
-        title="Briefings, dialogues and convenings"
+        title="Briefings, Dialogues and Convenings"
         description="We convene government, academia and industry through public and private events — from conferences and webinars to closed-door roundtables."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Events' }]}
         actions={
