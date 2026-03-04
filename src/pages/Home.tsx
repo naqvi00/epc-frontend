@@ -478,8 +478,8 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-14">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="font-heading text-xs uppercase tracking-[0.18em] text-slate-600">Featured insights</p>
-              <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-900">Research you can act on</h2>
+              <p className="font-heading text-xs uppercase tracking-[0.18em] text-slate-600 text-center">Featured insights</p>
+              <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-900 text-center">Research you can act on</h2>
             </div>
             <Link to="/insights" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:underline">
               Browse insights <ArrowRight className="h-4 w-4" />
