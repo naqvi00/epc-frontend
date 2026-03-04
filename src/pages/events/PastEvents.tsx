@@ -32,7 +32,7 @@ export default function PastEvents() {
       <PageHeader
        variant="gradient"
         eyebrow="Events"
-        title="Past events"
+        title="Past Events"
         description="Selected recordings, transcripts and recaps. This is a frontend-only demo; replace items with your CMS later."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Events', href: '/events' }, { label: 'Past' }]}
         actions={
