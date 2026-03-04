@@ -8,7 +8,7 @@ export default function SupportLanding() {
       <PageHeader
        variant="gradient"
         eyebrow="Support"
-        title="Support our work"
+        title="Support Our Work"
         description="A clean, donor-ready page template. Replace text with your real donation/membership details. Frontend-only demo (no payments)."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Support' }]}
         actions={
