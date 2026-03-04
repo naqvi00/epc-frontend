@@ -36,7 +36,7 @@ export default function UpcomingEvents() {
       <PageHeader
         variant="gradient"
         eyebrow="Events"
-        title="Upcoming events"
+        title="Upcoming Events"
         description="Register for upcoming briefings, webinars and closed-door dialogues."
         crumbs={[
           { label: "Home", href: "/" },
