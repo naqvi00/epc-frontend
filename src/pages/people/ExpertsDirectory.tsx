@@ -125,7 +125,7 @@ export default function ExpertsDirectory() {
     <div>
       <PageHeader
         eyebrow="People / Experts"
-        title="Expert directory"
+        title="Expert Directory"
         description="Filter by topic and region. This listing is structured to connect to a CMS later, while remaining credible as a standalone directory now."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'People / Experts', href: '/people' }, { label: 'Directory' }]}
         actions={
