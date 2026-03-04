@@ -21,7 +21,7 @@ export default function Partners() {
       <PageHeader
       variant="gradient"
         eyebrow="About"
-        title="Partners & network"
+        title="Partners & Network"
         description="A curated network that supports research quality, convening credibility and programme delivery."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About', href: '/about' }, { label: 'Partners & Network' }]}
       />
