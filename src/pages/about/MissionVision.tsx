@@ -91,7 +91,7 @@ export default function MissionVision() {
   <PageHeader
   variant="gradient"
   eyebrow="About"
-  title="Mission & vision"
+  title="Mission & Vision"
   description="A clear purpose, a practical vision, and the objectives that guide our work across the region."
   crumbs={[
     { label: "Home", href: "/" },
