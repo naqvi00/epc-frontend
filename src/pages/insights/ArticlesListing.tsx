@@ -33,7 +33,7 @@ export default function ArticlesListing() {
       <PageHeader
         variant="gradient"
         eyebrow="Research / Insights"
-        title="All articles"
+        title="All Articles"
         description="A demo listing page with filters (frontend-only). Replace sample content with CMS items later."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Research / Insights', href: '/insights' }, { label: 'All Articles' }]}
       />
