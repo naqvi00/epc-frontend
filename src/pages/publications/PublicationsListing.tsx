@@ -18,7 +18,7 @@ export default function PublicationsListing() {
       <PageHeader
        variant="gradient"
         eyebrow="Publications Library"
-        title="Browse and filter publications"
+        title="Browse and Filter Publications"
         description="This is a front-end demonstration of the library layout and filtering UI. You can wire it to CMS content later."
         crumbs={[
           { label: 'Home', href: '/' },
