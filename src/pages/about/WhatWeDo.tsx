@@ -72,7 +72,7 @@ export default function WhatWeDo() {
       <PageHeader
       variant="gradient"
         eyebrow="About"
-        title="What we do"
+        title="What We Do"
         description="We deliver decision support through impartial research, trusted dialogue, and practical education—focused first on priority issues with high public value."
         crumbs={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }, { label: "What We Do" }]}
         actions={
