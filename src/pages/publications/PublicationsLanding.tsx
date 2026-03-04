@@ -10,7 +10,7 @@ export default function PublicationsLanding() {
       <PageHeader
        variant="gradient"
         eyebrow="Publications"
-        title="Reports, briefs and flagship series"
+        title="Reports, Briefs and Flagship Series"
         description="Our publications translate evidence into practical options for decision-makers. Browse briefs, research papers and thematic reports across the Council’s priority topics."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Publications' }]}
         actions={
