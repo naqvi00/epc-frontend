@@ -93,7 +93,7 @@ export default function MediaPress() {
       <PageHeader
         variant="gradient"
         eyebrow="About"
-        title="Media & press"
+        title="Media & Press"
         description="Press resources, approved imagery, and contact details for media enquiries."
         crumbs={[
           { label: "Home", href: "/" },
