@@ -59,7 +59,7 @@ export default function AboutOverview() {
             <div className="md:col-span-8">
               <p className="font-heading text-xs uppercase tracking-[0.18em] text-white/70">About</p>
               <h1 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-white md:text-5xl">
-                Independent, non-partisan policy analysis
+                Independent, Non-partisan Policy Analysis
               </h1>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-white/80 md:text-base">
                 Eurasia Policy Council is a UK-based think tank and policy institute that supports decision-makers with
