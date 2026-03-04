@@ -148,7 +148,7 @@ export default function Leadership() {
       tags: ['Climate', 'Diplomacy', 'Women’s Leadership', 'Sustainability'],
     },
     {
-      name: 'Mr. Raza Syed',
+      name: 'Raza Syed',
       image: Raza,
       title: 'Management Team (CFO)',
       roleBadge: 'Chief Financial Officer',
