@@ -14,7 +14,7 @@ export default function AnnualReport() {
       <PageHeader
       variant="gradient"
         eyebrow="About"
-        title="Annual report & financials"
+        title="Annual Report & Financials"
         description="Transparency and impact reporting. Replace placeholders with your PDFs and audited statements."
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About', href: '/about' }, { label: 'Annual Report' }]}
       />
