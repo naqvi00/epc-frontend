@@ -26,7 +26,7 @@ export default function Careers() {
       <PageHeader
         variant="gradient"
         eyebrow="About"
-        title="Careers & internships"
+        title="Careers & Internships"
         description="Join a team focused on rigorous research, trusted dialogue and practical education programmes."
         crumbs={[{ label: "Home", href: "/" }, { label: "About", href: "/about" }, { label: "Careers" }]}
       />
