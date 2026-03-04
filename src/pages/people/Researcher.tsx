@@ -167,6 +167,7 @@ export default function Researchers() {
   return (
     <div>
       <PageHeader
+       variant="gradient"
         eyebrow="people"
         title="Researchers"
         description="Dedicated researchers supporting evidence-led analysis, governance quality and programme delivery."
