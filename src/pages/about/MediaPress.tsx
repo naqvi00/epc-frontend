@@ -10,10 +10,10 @@ import {
 } from "lucide-react";
 import PageHeader from "../../components/ui/PageHeader";
 
-import img1 from "../../assets/epcevent2.JPG";
+import img1 from "../../assets/epcevent2.png";
 import img2 from "../../assets/epcevent3.JPG";
 import img3 from "../../assets/epcevent4.JPG";
-import img4 from "../../assets/epcevent1.jpg";
+import img4 from "../../assets/epcevent1.png";
 import img5 from "../../assets/epcevent5.JPG";
 import img6 from "../../assets/epcevent6.JPG";
 
