@@ -1,100 +1,249 @@
+import { useMemo, useState } from "react";
 import {
   Mail,
-  FileText,
   Mic,
-  Download,
+  CalendarDays,
   Image as ImageIcon,
   ArrowUpRight,
+  X,
+  PlayCircle,
 } from "lucide-react";
 import PageHeader from "../../components/ui/PageHeader";
-import img1 from "../../assets/media1.png";
-import img2 from "../../assets/media2.png";
-import img3 from "../../assets/media3.png";
-import img4 from "../../assets/media4.png";
-import img5 from "../../assets/media5.png";
-import img6 from "../../assets/media6.png";
+
+import img1 from "../../assets/epcevent2.JPG";
+import img2 from "../../assets/epcevent3.JPG";
+import img3 from "../../assets/epcevent4.JPG";
+import img4 from "../../assets/epcevent1.jpg";
+import img5 from "../../assets/epcevent5.JPG";
+import img6 from "../../assets/epcevent6.JPG";
 
 
-type PressImage = {
+type GalleryItem = {
   id: string;
-  src: string; // replace with your import or url
+  src: string;
   alt: string;
   caption: string;
 };
 
-const PRESS_IMAGES: PressImage[] = [
-  {
-    id: "p1",
-    src: img1,
-    alt: "Press image 1",
-    caption: "Roundtable dialogue — London",
-  },
-  {
-    id: "p2",
-    src: img2,
-    alt: "Press image 2",
-    caption: "Research briefing — policy audience",
-  },
-  {
-    id: "p3",
-    src: img3,
-    alt: "Press image 3",
-    caption: "Publication launch — EPC insights",
-  },
-  {
-    id: "p4",
-    src: img4,
-    alt: "Press image 4",
-    caption: "Stakeholder workshop — training",
-  },
-  {
-    id: "p5",
-    src: img5,
-    alt: "Press image 5",
-    caption: "Expert discussion — Eurasia focus",
-  },
-  {
-    id: "p6",
-    src: img6,
-    alt: "Press image 6",
-    caption: "Closed-door session — partners",
-  },
-];
+type MediaCategory = {
+  id: string;
+  title: string;
+  body: string;
+  icon: React.ElementType;
+  actionLabel: string;
+  enabled: boolean;
+  videoUrl?: string;
+  mainImage?: GalleryItem;
+  gallery?: GalleryItem[];
+};
 
-const resources = [
+const categories: MediaCategory[] = [
   {
-    title: "Press kit",
-    body: "Logos, approved organisation description, and press-ready photos.",
-    icon: FileText,
-    actionLabel: "Download kit",
-    href: "#", // replace later
+    id: "epc-events",
+    title: "EPC Events",
+    body: "Highlights from EPC events, featured video, and related event gallery.",
+    icon: CalendarDays,
+    actionLabel: "View gallery",
+    enabled: true,
+
+    // ACTIVE YOUTUBE VIDEO FOR EPC EVENTS
+    videoUrl: "https://www.youtube.com/embed/J7Ub5BHVxJ4",
+
+    mainImage: {
+      id: "ev-main",
+      src: img4,
+      alt: "EPC Events main image",
+      caption: "Now Showing — EPC Event Group Photo",
+    },
+    gallery: [
+      {
+        id: "ev-1",
+        src: img1,
+        alt: "EPC event image 1",
+        caption: "Management Team — London",
+      },
+      {
+        id: "ev-2",
+        src: img2,
+        alt: "EPC event image 2",
+        caption: "Research briefing — policy audience",
+      },
+      {
+        id: "ev-3",
+        src: img5,
+        alt: "EPC event image 3",
+        caption: "Publication launch — EPC insights",
+      },
+      {
+        id: "ev-4",
+        src: img3,
+        alt: "EPC event image 4",
+        caption: "Expert discussion — Eurasia focus",
+      },
+      {
+        id: "ev-5",
+        src: img6,
+        alt: "EPC event image 5",
+        caption: "Expert discussion — Eurasia focus",
+      },
+    ],
   },
+
   {
+    id: "spokespeople",
     title: "Spokespeople",
-    body: "Approved experts, topics/regions, and availability guidelines.",
+    body: "Approved experts, appearances, speaking visuals, and related media gallery.",
     icon: Mic,
-    actionLabel: "View list",
-    href: "#", // replace later
+    actionLabel: "View gallery",
+
+    // NOT READY YET
+    // keep false so clicking this card will open nothing for now
+    enabled: false,
+
+    /*
+    =========================
+    FUTURE SETUP: SPOKESPEOPLE
+    =========================
+
+    When ready, change:
+    enabled: true,
+
+    Then add your video and images below:
+
+    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
+
+    mainImage: {
+      id: "sp-main",
+      src: img2,
+      alt: "Spokespeople main image",
+      caption: "Now showing — spokesperson feature",
+    },
+
+    gallery: [
+      {
+        id: "sp-1",
+        src: img2,
+        alt: "Spokespeople image 1",
+        caption: "Policy audience session",
+      },
+      {
+        id: "sp-2",
+        src: img3,
+        alt: "Spokespeople image 2",
+        caption: "Stakeholder workshop",
+      },
+    ],
+    */
   },
+
   {
+    id: "media-enquiries",
     title: "Media enquiries",
-    body: "A dedicated contact for press requests and response expectations.",
+    body: "Media-facing materials, contact visuals, and press-related supporting gallery.",
     icon: Mail,
-    actionLabel: "Email press office",
-    href: "mailto:press@eurasiapolicycouncil.org",
+    actionLabel: "View gallery",
+
+    // NOT READY YET
+    // keep false so clicking this card will open nothing for now
+    enabled: false,
+
+    /*
+    ============================
+    FUTURE SETUP: MEDIA ENQUIRIES
+    ============================
+
+    When ready, change:
+    enabled: true,
+
+    Then add your video and images below:
+
+    videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
+
+    mainImage: {
+      id: "me-main",
+      src: img1,
+      alt: "Media enquiries main image",
+      caption: "Now showing — press relations overview",
+    },
+
+    gallery: [
+      {
+        id: "me-1",
+        src: img1,
+        alt: "Media image 1",
+        caption: "Media panel coverage",
+      },
+      {
+        id: "me-2",
+        src: img4,
+        alt: "Media image 2",
+        caption: "Launch coverage visual",
+      },
+    ],
+    */
   },
 ];
 
+function Modal({
+  open,
+  onClose,
+  children,
+  size = "xl",
+}: {
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  size?: "lg" | "xl" | "2xl";
+}) {
+  if (!open) return null;
 
+  const widthClass =
+    size === "lg"
+      ? "max-w-4xl"
+      : size === "2xl"
+      ? "max-w-6xl"
+      : "max-w-5xl";
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4">
+      <div
+        className={`relative w-full ${widthClass} overflow-hidden rounded-3xl bg-white shadow-2xl`}
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-line bg-white text-slate-700 hover:bg-slate-50"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function MediaPress() {
+  const [activeCategoryId, setActiveCategoryId] = useState<string | null>(null);
+  const [galleryPopupOpen, setGalleryPopupOpen] = useState(false);
+
+  const activeCategory = useMemo(
+    () => categories.find((item) => item.id === activeCategoryId) ?? null,
+    [activeCategoryId]
+  );
+
+  const handleOpenCategory = (item: MediaCategory) => {
+    // if section is not ready yet, do nothing
+    if (!item.enabled) return;
+    setActiveCategoryId(item.id);
+  };
+
   return (
     <div>
       <PageHeader
         variant="gradient"
         eyebrow="About"
-        title="Media & Press"
-        description="Press resources, approved imagery, and contact details for media enquiries."
+        title="Media & press"
+        description="Press resources, approved imagery, video highlights, and contact details for media enquiries."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
@@ -104,111 +253,184 @@ export default function MediaPress() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12">
-          {/* TOP ROW: resource cards */}
+          {/* TOP CARDS */}
           <div className="grid gap-6 md:grid-cols-3">
-            {resources.map((r) => (
+            {categories.map((item) => (
               <div
-                key={r.title}
+                key={item.id}
                 className="rounded-2xl border border-brand-line bg-white p-6 shadow-card"
               >
                 <div className="flex items-center justify-between">
                   <div className="font-heading text-lg font-semibold text-slate-900">
-                    {r.title}
+                    {item.title}
                   </div>
-                  <r.icon className="h-5 w-5 text-slate-500" />
+                  <item.icon className="h-5 w-5 text-slate-500" />
                 </div>
 
-                <p className="mt-2 text-sm text-slate-700">{r.body}</p>
+                <p className="mt-2 text-sm text-slate-700">{item.body}</p>
 
-                <a
-                  href={r.href}
-                  className="mt-4 inline-flex items-center gap-2 rounded-xl border border-brand-line bg-brand-mist px-4 py-2 text-sm font-semibold text-brand-navy hover:bg-brand-mist/70"
+                <button
+                  type="button"
+                  onClick={() => handleOpenCategory(item)}
+                  className="mt-4 inline-flex items-center gap-2 rounded-xl border border-brand-line bg-brand-mist px-4 py-2 text-sm font-semibold text-brand-navy hover:bg-brand-mist/70 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  <Download className="h-4 w-4" />
-                  {r.actionLabel}
+                  <ImageIcon className="h-4 w-4" />
+                  {item.actionLabel}
                   <ArrowUpRight className="h-4 w-4" />
-                </a>
+                </button>
               </div>
             ))}
           </div>
 
+          {/* OPTIONAL PREVIEW SECTION ON PAGE */}
+          <div className="mt-12 rounded-3xl border border-brand-line bg-brand-mist/40 p-6">
+            <p className="font-heading text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              Featured media
+            </p>
+            <h3 className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+              Browse EPC Events, Spokespeople, and Media Enquiries galleries
+            </h3>
+          </div>
+        </div>
+      </section>
 
-          {/* PRESS GALLERY */}
-          <div className="mt-12">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <p className="font-heading text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                  Press gallery
-                </p>
-                <h3 className="mt-2 font-heading text-xl font-semibold text-slate-900">
-                  Downloadable images for editorial use
-                </h3>
-                <p className="mt-2 max-w-3xl text-sm text-slate-600">
-                  Replace the demo images with your six approved photos. (You can later add
-                  a lightbox, or link each image to a downloadable file.)
-                </p>
-              </div>
-
-              <div className="hidden sm:flex items-center gap-2 rounded-xl border border-brand-line bg-white px-4 py-3 text-sm font-semibold text-slate-700">
-                <ImageIcon className="h-4 w-4 text-slate-500" />
-                6 assets
-              </div>
+      {/* MAIN POPUP */}
+      <Modal
+        open={!!activeCategory}
+        onClose={() => {
+          setActiveCategoryId(null);
+          setGalleryPopupOpen(false);
+        }}
+        size="2xl"
+      >
+        {activeCategory && activeCategory.enabled && (
+          <div className="max-h-[90vh] overflow-y-auto">
+            <div className="border-b border-brand-line px-6 pb-5 pt-6 md:px-8">
+              <p className="font-heading text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Media section
+              </p>
+              <h2 className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+                {activeCategory.title}
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm text-slate-600">
+                {activeCategory.body}
+              </p>
             </div>
 
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {PRESS_IMAGES.map((img) => (
+            <div className="space-y-8 p-6 md:p-8">
+              {/* VIDEO AT TOP */}
+              <div>
+                <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-800">
+                  <PlayCircle className="h-4 w-4 text-brand-navy" />
+                  Featured video
+                </div>
+
+                <div className="overflow-hidden rounded-3xl border border-brand-line bg-slate-100">
+                  {activeCategory.videoUrl ? (
+                    <div className="aspect-video w-full">
+                      <iframe
+                        src={activeCategory.videoUrl}
+                        title={`${activeCategory.title} featured video`}
+                        className="h-full w-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-[240px] items-center justify-center text-sm text-slate-500 md:h-[420px]">
+                      Add your video here
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* MAIN IMAGE */}
+              <div>
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <div>
+                    <p className="font-heading text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      Gallery section
+                    </p>
+                    <h3 className="mt-1 font-heading text-xl font-semibold text-slate-900">
+                      Main image now showing
+                    </h3>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setGalleryPopupOpen(true)}
+                    className="inline-flex items-center gap-2 rounded-xl border border-brand-line bg-brand-mist px-4 py-2 text-sm font-semibold text-brand-navy hover:bg-brand-mist/70"
+                  >
+                    <ImageIcon className="h-4 w-4" />
+                    View more pics
+                  </button>
+                </div>
+
+                {activeCategory.mainImage && (
+                  <figure className="overflow-hidden rounded-3xl border border-brand-line bg-white shadow-card">
+                    <img
+                      src={activeCategory.mainImage.src}
+                      alt={activeCategory.mainImage.alt}
+                      className="h-[240px] w-full object-cover md:h-[440px]"
+                    />
+                    <figcaption className="p-5">
+                      <div className="text-base font-semibold text-slate-900">
+                        {activeCategory.mainImage.caption}
+                      </div>
+                      <div className="mt-1 text-sm text-slate-600">
+                        This is the featured image for the {activeCategory.title} section.
+                      </div>
+                    </figcaption>
+                  </figure>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
+
+      {/* SECOND POPUP: RELATED IMAGES ONLY */}
+      <Modal
+        open={galleryPopupOpen && !!activeCategory}
+        onClose={() => setGalleryPopupOpen(false)}
+        size="2xl"
+      >
+        {activeCategory && activeCategory.enabled && (
+          <div className="max-h-[90vh] overflow-y-auto p-6 md:p-8">
+            <div className="mb-6">
+              <p className="font-heading text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                Related gallery
+              </p>
+              <h3 className="mt-2 font-heading text-2xl font-semibold text-slate-900">
+                {activeCategory.title} images
+              </h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Only the images related to this section are shown here.
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              {activeCategory.gallery?.map((img) => (
                 <figure
                   key={img.id}
                   className="overflow-hidden rounded-3xl border border-brand-line bg-white shadow-card"
                 >
-                  <div className="relative">
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="h-52 w-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-brand-navy">
-                      Approved
-                    </div>
-                  </div>
-
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="h-64 w-full object-cover"
+                  />
                   <figcaption className="p-5">
                     <div className="text-sm font-semibold text-slate-900">
                       {img.caption}
                     </div>
-                    <div className="mt-1 text-xs text-slate-600">
-                      Replace caption with your official label.
-                    </div>
-
-                    <button
-                      type="button"
-                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-brand-line bg-brand-mist px-4 py-2 text-sm font-semibold text-brand-navy hover:bg-brand-mist/70"
-                      // later you can make this download the image asset
-                      onClick={() => {}}
-                    >
-                      <Download className="h-4 w-4" />
-                      Download
-                    </button>
                   </figcaption>
                 </figure>
               ))}
             </div>
           </div>
-
-          {/* OPTIONAL: NOTES */}
-          <div className="mt-12 rounded-2xl border border-brand-line bg-brand-mist p-6">
-            <div className="font-heading text-sm font-semibold text-slate-900">
-              Usage notes
-            </div>
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
-              <li>Images are provided for editorial use in coverage of EPC activities.</li>
-              <li>Please credit “Eurasia Policy Council” unless otherwise specified.</li>
-              <li>For logos and headshots, use the Press Kit link above.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+        )}
+      </Modal>
     </div>
   );
 }
