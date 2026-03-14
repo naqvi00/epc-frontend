@@ -401,7 +401,7 @@ export default function Header() {
            <div className="flex items-center gap-5">
     
     <a
-      href="https://instagram.com/yourhandle"
+      href="https://www.instagram.com/epc_london/"
       target="_blank"
       rel="noreferrer"
       aria-label="Instagram"
@@ -421,7 +421,7 @@ export default function Header() {
     </a>
 
     <a
-      href="https://linkedin.com/company/yourcompany"
+      href="https://www.linkedin.com/company/eurasia-policy-council/"
       target="_blank"
       rel="noreferrer"
       aria-label="LinkedIn"
@@ -431,7 +431,7 @@ export default function Header() {
     </a>
 
     <a
-      href="https://x.com/yourhandle"
+      href="https://x.com/london_epc"
       target="_blank"
       rel="noreferrer"
       aria-label="X"
