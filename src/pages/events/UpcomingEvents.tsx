@@ -9,6 +9,9 @@ type EventItem = {
   location: string;
   format: string;
   imageUrl?: string;
+  recap?: string;
+  isPublished?: boolean;
+  showInPast?: boolean;
 };
 
 export default function UpcomingEvents() {
@@ -36,7 +39,7 @@ export default function UpcomingEvents() {
       <PageHeader
         variant="gradient"
         eyebrow="Events"
-        title="Upcoming Events"
+        title="Upcoming events"
         description="Register for upcoming briefings, webinars and closed-door dialogues."
         crumbs={[
           { label: "Home", href: "/" },
@@ -61,22 +64,20 @@ export default function UpcomingEvents() {
                 key={e._id}
                 className="overflow-hidden rounded-2xl border border-brand-line bg-white shadow-sm"
               >
-                {/* ✅ Event Image */}
-{e.imageUrl ? (
-  <div className="relative bg-slate-50">
-    <img
-      src={e.imageUrl}
-      alt={e.title}
-      className="h-80 w-full object-contain"
-      loading="lazy"
-    />
+                {e.imageUrl ? (
+                  <div className="relative bg-slate-50">
+                    <img
+                      src={e.imageUrl}
+                      alt={e.title}
+                      className="h-80 w-full object-contain"
+                      loading="lazy"
+                    />
 
-    {/* Format badge on image */}
-    <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800 shadow-sm">
-      {e.format}
-    </div>
-  </div>
-) : null}
+                    <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-800 shadow-sm">
+                      {e.format}
+                    </div>
+                  </div>
+                ) : null}
 
                 <div className="p-6">
                   <div className="flex items-start justify-between gap-4">
@@ -98,14 +99,11 @@ export default function UpcomingEvents() {
                   <p className="mt-4 text-sm text-slate-700">
                     Stay informed and join our upcoming engagement. Registration details will be shared soon.
                   </p>
-
                 </div>
               </article>
             ))}
           </div>
         )}
-
-      
       </section>
     </main>
   );
