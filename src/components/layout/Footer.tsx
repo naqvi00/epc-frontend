@@ -125,14 +125,14 @@ Kind regards,`
         {/* Bottom legal row */}
         <div className="mt-12 flex flex-col gap-3 border-t border-slate-200 pt-6 text-xs text-slate-600 md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {brand.orgName}. All rights reserved.
+            © {year} {brand.orgName}. All rights reserved (Absoltix Solution).
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Link className="hover:text-blue-700" to="#">Privacy</Link>
+            <Link className="hover:text-blue-700" to="/privacy">Privacy</Link>
             <Link className="hover:text-blue-700" to="#">Cookies</Link>
-            <Link className="hover:text-blue-700" to="#">Terms</Link>
-            <Link className="hover:text-blue-700" to="#">Disclaimer</Link>
+            <Link className="hover:text-blue-700" to="/terms">Terms</Link>
+            <Link className="hover:text-blue-700" to="/disclaimer">Disclaimer</Link>
           </div>
         </div>
 
