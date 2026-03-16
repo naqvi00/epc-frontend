@@ -1,5 +1,104 @@
 import PageHeader from "../components/ui/PageHeader";
 
+const sections = [
+  {
+    title: "1. About EPC",
+    body: [
+      "The Economic Policy Centre (EPC) is an independent think tank and policy platform that publishes research, analysis, commentary, event material and public-interest content for educational and engagement purposes.",
+    ],
+  },
+  {
+    title: "2. Acceptance of these terms",
+    body: [
+      "By accessing or using this website, you agree to these Terms of Use. If you do not agree with them, you should not use the website.",
+    ],
+  },
+  {
+    title: "3. Permitted use",
+    body: [
+      "You may use this website for lawful, personal, educational, professional or policy-reference purposes only.",
+      "You must not use the website in any way that is unlawful, harmful, abusive, deceptive, disruptive, or that interferes with its proper operation or security.",
+    ],
+  },
+  {
+    title: "4. Intellectual property",
+    body: [
+      "Unless otherwise stated, all content on this website, including text, branding, design, graphics, publications, event materials and downloadable content, is owned by or licensed to EPC and is protected by intellectual property law.",
+      "You may view, download and print materials for non-commercial reference or educational use, provided that attribution is preserved and meaning is not altered.",
+    ],
+  },
+  {
+    title: "5. Restrictions",
+    body: [
+      "You may not reproduce, republish, scrape, modify, distribute, sell or commercially exploit EPC content without prior written permission unless such use is otherwise permitted by law.",
+    ],
+  },
+  {
+    title: "6. Publications and viewpoints",
+    body: [
+      "EPC publishes research, reports, event summaries and commentary to support informed debate and policy engagement.",
+      "Views expressed in particular articles, papers, interviews or event remarks may belong to the individual authors or speakers and do not necessarily represent an official institutional position unless clearly stated.",
+    ],
+  },
+  {
+    title: "7. Events and registrations",
+    body: [
+      "EPC may offer access to public or private events, briefings, webinars and roundtables through the website.",
+      "Event details may be updated, postponed, limited or cancelled where necessary. Users registering for events must provide accurate information and comply with event-specific instructions.",
+    ],
+  },
+  {
+    title: "8. External links",
+    body: [
+      "This website may contain links to third-party sites, partner platforms, reports or external resources. EPC does not control and is not responsible for their content, availability, accuracy or practices.",
+    ],
+  },
+  {
+    title: "9. Accuracy and availability",
+    body: [
+      "EPC seeks to publish information carefully and in good faith, but does not guarantee that all website content is complete, current, accurate or free from error.",
+      "We may revise, remove or update content at any time without notice and do not guarantee uninterrupted access to the site.",
+    ],
+  },
+  {
+    title: "10. Prohibited conduct",
+    body: [
+      "You agree not to attempt unauthorised access to the website, introduce malicious code, misuse forms or services, impersonate others, or use the platform to distribute unlawful, defamatory or harmful material.",
+    ],
+  },
+  {
+    title: "11. Limitation of liability",
+    body: [
+      "To the fullest extent permitted by law, EPC excludes liability for indirect, incidental or consequential loss arising from use of, or reliance on, this website or its content.",
+      "Nothing in these Terms excludes liability that cannot lawfully be excluded.",
+    ],
+  },
+  {
+    title: "12. Privacy",
+    body: [
+      "Use of the website is also subject to EPC’s Privacy Policy and any applicable cookies notice or policy.",
+    ],
+  },
+  {
+    title: "13. Changes to these terms",
+    body: [
+      "EPC may update these Terms of Use from time to time. The latest version published on this page will apply from the date of publication unless otherwise stated.",
+    ],
+  },
+  {
+    title: "14. Governing law",
+    body: [
+      "These Terms are governed by the laws of England and Wales, unless another legal framework is required by applicable law. Relevant disputes shall be subject to the jurisdiction of the appropriate courts of England and Wales.",
+    ],
+  },
+  {
+    title: "15. Contact",
+    body: [
+      "Questions regarding these Terms of Use may be directed to EPC using the contact details provided on the website.",
+    ],
+  },
+];
+
 export default function TermsOfUse() {
   return (
     <main className="bg-white">
@@ -8,137 +107,75 @@ export default function TermsOfUse() {
         eyebrow="Legal"
         title="Terms of Use"
         description="The terms governing access to and use of EPC’s website, publications, events and public materials."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "Terms of Use" },
-        ]}
+        crumbs={[{ label: "Home", href: "/" }, { label: "Terms of Use" }]}
       />
 
-      <section className="mx-auto max-w-4xl px-4 py-12">
-        <div className="rounded-2xl border border-brand-line bg-white p-6 shadow-sm md:p-8">
-          <div className="prose prose-slate max-w-none">
-            <p>
-              Effective date: [Insert date]
-            </p>
+      <section className="mx-auto max-w-5xl px-4 py-12">
+        <div className="overflow-hidden rounded-[28px] border border-brand-line bg-white shadow-sm">
+          <div className="border-b border-brand-line bg-gradient-to-r from-slate-50 via-white to-brand-mist/40 p-6 md:p-8">
+            <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+              <div className="max-w-3xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blue">
+                  Website Access & Use
+                </p>
+                <h1 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
+                  Terms of Use
+                </h1>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
+                  These terms set out the conditions for using EPC’s website and
+                  public-facing materials, including publications, event pages,
+                  downloads and policy content.
+                </p>
+              </div>
 
-            <p>
-              These Terms of Use govern your access to and use of the website operated by the Economic
-              Policy Centre (EPC). By using this website, you agree to be bound by these Terms. If you
-              do not agree, please do not use the website.
-            </p>
+              <div className="shrink-0">
+                <div className="rounded-2xl border border-brand-line bg-white px-4 py-3 text-right shadow-sm">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    Published
+                  </p>
+                  <p className="mt-1 text-lg font-bold text-slate-900">3/16/2026</p>
+                </div>
+              </div>
+            </div>
 
-            <h2>1. About EPC</h2>
-            <p>
-              EPC is an independent think tank and policy platform that publishes research, commentary,
-              analysis and event-related content for public information, policy engagement and educational purposes.
-            </p>
+            <div className="mt-6 inline-flex items-center rounded-full border border-brand-line bg-brand-mist/60 px-4 py-2">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600">
+                Effective date
+              </span>
+              <span className="ml-3 text-sm font-bold text-brand-blue">March 16, 2026</span>
+            </div>
+          </div>
 
-            <h2>2. Use of the website</h2>
-            <p>You may use this website only for lawful purposes and in a manner that does not:</p>
-            <ul>
-              <li>Violate applicable laws or regulations.</li>
-              <li>Infringe the rights of EPC or any third party.</li>
-              <li>Interfere with the proper functioning, security or availability of the website.</li>
-              <li>Introduce malicious code, spam, automated abuse or disruptive activity.</li>
-            </ul>
+          <div className="p-6 md:p-8">
+            <div className="mb-8 rounded-2xl border border-brand-line bg-slate-50/70 p-5">
+              <p className="text-sm leading-7 text-slate-700">
+                By using this website, you agree to these Terms of Use. They are
+                intended to protect both EPC and its users while supporting a
+                professional, secure and reliable environment for policy
+                research, public dialogue and institutional communication.
+              </p>
+            </div>
 
-            <h2>3. Intellectual property</h2>
-            <p>
-              Unless otherwise stated, all website content, including text, design, branding, graphics,
-              documents, publications, event content and other materials, is owned by or licensed to EPC
-              and is protected by applicable intellectual property laws.
-            </p>
+            <div className="space-y-6">
+              {sections.map((section) => (
+                <article
+                  key={section.title}
+                  className="rounded-2xl border border-brand-line bg-white p-5 transition-shadow hover:shadow-sm md:p-6"
+                >
+                  <h2 className="font-heading text-xl font-semibold text-slate-900">
+                    {section.title}
+                  </h2>
 
-            <p>
-              You may view, download and print content for personal, non-commercial, educational or
-              policy-reference purposes, provided that you do not remove attribution, alter meaning, or
-              imply endorsement by EPC.
-            </p>
-
-            <p>
-              You may not reproduce, republish, distribute, modify, sell or commercially exploit EPC
-              content without prior written permission, except where use is otherwise permitted by law.
-            </p>
-
-            <h2>4. Publications and policy content</h2>
-            <p>
-              EPC publishes research, commentary and public-interest material intended to contribute to
-              discussion and informed debate. The views expressed in particular articles, papers, event
-              remarks or commentary may be those of the individual authors or speakers and do not always
-              represent an institutional position unless expressly stated.
-            </p>
-
-            <h2>5. Events and registrations</h2>
-            <p>
-              EPC may offer registration for public or private events, roundtables, webinars and briefings.
-              Event details may be updated, postponed, cancelled or limited at EPC’s discretion where necessary.
-            </p>
-
-            <p>
-              By registering for an event, you agree to provide accurate information and to comply with
-              any event-specific instructions or conditions shared by EPC.
-            </p>
-
-            <h2>6. External links</h2>
-            <p>
-              This website may include links to third-party websites, reports, partner platforms or
-              external resources for convenience and reference. EPC does not control and is not
-              responsible for the availability, content, accuracy or practices of third-party websites.
-            </p>
-
-            <h2>7. Accuracy and availability</h2>
-            <p>
-              EPC seeks to ensure that information published on this website is presented carefully and
-              in good faith. However, we do not guarantee that all content is always complete, current,
-              accurate or free from error. Website content may be updated, revised or removed without notice.
-            </p>
-
-            <p>
-              EPC does not guarantee uninterrupted access to the website and may suspend, withdraw or
-              modify any aspect of the site at any time for operational, security or editorial reasons.
-            </p>
-
-            <h2>8. Prohibited conduct</h2>
-            <p>You agree not to:</p>
-            <ul>
-              <li>Attempt unauthorised access to the website, server or related systems.</li>
-              <li>Copy or scrape website content in a harmful or abusive manner.</li>
-              <li>Use the website to transmit unlawful, defamatory, fraudulent or harmful material.</li>
-              <li>Misrepresent your identity or affiliation when interacting with EPC through the website.</li>
-            </ul>
-
-            <h2>9. Limitation of liability</h2>
-            <p>
-              To the fullest extent permitted by law, EPC excludes liability for any indirect,
-              consequential or incidental loss arising from use of, or reliance on, this website or its content.
-            </p>
-
-            <p>
-              Nothing in these Terms excludes liability that cannot lawfully be excluded under applicable law.
-            </p>
-
-            <h2>10. Privacy and data protection</h2>
-            <p>
-              Your use of the website is also subject to our Privacy Policy and any applicable Cookies Policy.
-            </p>
-
-            <h2>11. Changes to these Terms</h2>
-            <p>
-              EPC may update these Terms of Use from time to time. Revised terms will take effect when
-              published on this page unless otherwise stated.
-            </p>
-
-            <h2>12. Governing law</h2>
-            <p>
-              These Terms are governed by the laws of England and Wales, unless another applicable legal
-              framework is required by law. Any disputes arising in connection with these Terms shall be
-              subject to the jurisdiction of the appropriate courts of England and Wales.
-            </p>
-
-            <h2>13. Contact</h2>
-            <p>
-              Questions about these Terms may be directed to EPC using the contact details available on the website.
-            </p>
+                  <div className="mt-3 space-y-3">
+                    {section.body.map((paragraph, idx) => (
+                      <p key={idx} className="text-sm leading-7 text-slate-700 md:text-[15px]">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
