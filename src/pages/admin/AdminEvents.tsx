@@ -8,7 +8,9 @@ type EventItem = {
   location: string;
   format: string;
   imageUrl?: string;
+  recap?: string;
   isPublished: boolean;
+  showInPast: boolean;
   sortOrder: number;
   createdAt?: string;
   updatedAt?: string;
@@ -20,7 +22,9 @@ const emptyForm = {
   location: "",
   format: "In-person",
   imageUrl: "",
+  recap: "",
   isPublished: true,
+  showInPast: false,
   sortOrder: 0,
 };
 
@@ -76,7 +80,9 @@ export default function AdminEvents() {
       location: item.location,
       format: item.format,
       imageUrl: item.imageUrl || "",
+      recap: item.recap || "",
       isPublished: item.isPublished,
+      showInPast: item.showInPast ?? false,
       sortOrder: item.sortOrder ?? 0,
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -87,7 +93,6 @@ export default function AdminEvents() {
     setForm({ ...emptyForm });
   }
 
-  // ✅ Your signed upload flow
   async function getCloudinarySignature(): Promise<CloudinarySignResponse> {
     return apiFetch<CloudinarySignResponse>("/api/admin/cloudinary/sign", {
       method: "POST",
@@ -140,6 +145,7 @@ export default function AdminEvents() {
         });
         setItems((prev) => [created, ...prev]);
       }
+
       resetForm();
     } catch (e: any) {
       setError(e.message || "Save failed");
@@ -152,7 +158,6 @@ export default function AdminEvents() {
     setError(null);
     const next = !item.isPublished;
 
-    // optimistic update
     setItems((prev) => prev.map((x) => (x._id === item._id ? { ...x, isPublished: next } : x)));
 
     try {
@@ -162,9 +167,26 @@ export default function AdminEvents() {
       });
       setItems((prev) => prev.map((x) => (x._id === updated._id ? updated : x)));
     } catch (e: any) {
-      // revert if failed
       setItems((prev) => prev.map((x) => (x._id === item._id ? item : x)));
       setError(e.message || "Update failed");
+    }
+  }
+
+  async function togglePast(item: EventItem) {
+    setError(null);
+    const next = !item.showInPast;
+
+    setItems((prev) => prev.map((x) => (x._id === item._id ? { ...x, showInPast: next } : x)));
+
+    try {
+      const updated = await apiFetch<EventItem>(`/api/events/${item._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ showInPast: next }),
+      });
+      setItems((prev) => prev.map((x) => (x._id === updated._id ? updated : x)));
+    } catch (e: any) {
+      setItems((prev) => prev.map((x) => (x._id === item._id ? item : x)));
+      setError(e.message || "Failed to update Past page status");
     }
   }
 
@@ -190,9 +212,10 @@ export default function AdminEvents() {
         <div>
           <h1 className="font-heading text-2xl font-bold text-brand-ink">Events</h1>
           <p className="mt-1 text-sm text-slate-600">
-            Manage Upcoming Events shown on the Home page (published events only).
+            Manage upcoming events and choose which events also appear on the Past Events page.
           </p>
         </div>
+
         <button
           onClick={load}
           className="rounded-xl border border-brand-line px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-brand-mist"
@@ -207,12 +230,12 @@ export default function AdminEvents() {
         </div>
       )}
 
-      {/* Create / Edit Form */}
       <form onSubmit={submitForm} className="mt-5 rounded-2xl border border-brand-line bg-white p-4">
         <div className="flex items-center justify-between gap-3">
           <div className="font-heading text-lg font-bold text-brand-ink">
             {editId ? "Edit Event" : "Add New Event"}
           </div>
+
           {editId && (
             <button
               type="button"
@@ -268,12 +291,32 @@ export default function AdminEvents() {
             </select>
           </div>
 
+          <div className="md:col-span-2">
+            <label className="text-sm font-semibold text-slate-700">Recap / Summary for Past Page</label>
+            <textarea
+              rows={4}
+              className="mt-1 w-full rounded-xl border border-brand-line px-3 py-2 text-sm"
+              value={form.recap}
+              onChange={(e) => setForm((p) => ({ ...p, recap: e.target.value }))}
+              placeholder="Short summary for the Past Events page..."
+            />
+          </div>
+
           <div className="flex items-center gap-3">
             <label className="text-sm font-semibold text-slate-700">Published</label>
             <input
               type="checkbox"
               checked={form.isPublished}
               onChange={(e) => setForm((p) => ({ ...p, isPublished: e.target.checked }))}
+            />
+          </div>
+
+          <div className="flex items-center gap-3">
+            <label className="text-sm font-semibold text-slate-700">Show on Past page</label>
+            <input
+              type="checkbox"
+              checked={form.showInPast}
+              onChange={(e) => setForm((p) => ({ ...p, showInPast: e.target.checked }))}
             />
           </div>
 
@@ -287,7 +330,6 @@ export default function AdminEvents() {
             />
           </div>
 
-          {/* ✅ Image upload (SIGNED) */}
           <div className="md:col-span-2">
             <label className="text-sm font-semibold text-slate-700">Event Image</label>
 
@@ -302,6 +344,7 @@ export default function AdminEvents() {
 
                   setSaving(true);
                   setError(null);
+
                   try {
                     const url = await uploadToCloudinary(file);
                     setForm((p) => ({ ...p, imageUrl: url }));
@@ -353,7 +396,6 @@ export default function AdminEvents() {
         </div>
       </form>
 
-      {/* List */}
       <div className="mt-6">
         <div className="font-heading text-lg font-bold text-brand-ink">
           All Events {loading ? "" : `(${items.length})`}
@@ -380,13 +422,24 @@ export default function AdminEvents() {
 
                     <div>
                       <div className="font-body text-sm font-semibold text-slate-900">{e.title}</div>
+
                       <div className="mt-1 font-body text-xs text-slate-600">
                         {e.date} • {e.location} • {e.format}
                       </div>
+
+                      {e.recap ? (
+                        <div className="mt-2 text-xs text-slate-600 line-clamp-2">{e.recap}</div>
+                      ) : null}
+
                       <div className="mt-2 text-xs text-slate-500">
-                        sortOrder: <span className="font-semibold">{e.sortOrder ?? 0}</span> • status:{" "}
+                        sortOrder: <span className="font-semibold">{e.sortOrder ?? 0}</span>
+                        {" • "}status:{" "}
                         <span className={e.isPublished ? "font-semibold text-emerald-700" : "font-semibold text-slate-500"}>
                           {e.isPublished ? "Published" : "Unpublished"}
+                        </span>
+                        {" • "}past page:{" "}
+                        <span className={e.showInPast ? "font-semibold text-blue-700" : "font-semibold text-slate-500"}>
+                          {e.showInPast ? "Visible" : "Hidden"}
                         </span>
                       </div>
                     </div>
@@ -398,6 +451,13 @@ export default function AdminEvents() {
                       className="rounded-xl border border-brand-line px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-brand-mist"
                     >
                       {e.isPublished ? "Unpublish" : "Publish"}
+                    </button>
+
+                    <button
+                      onClick={() => togglePast(e)}
+                      className="rounded-xl border border-brand-line px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-brand-mist"
+                    >
+                      {e.showInPast ? "Remove from Past" : "Show on Past"}
                     </button>
 
                     <button
