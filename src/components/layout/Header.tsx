@@ -411,7 +411,7 @@ export default function Header() {
     </a>
 
     <a
-      href="https://facebook.com/yourpage"
+      href="https://www.facebook.com/EurasiaPolicyCouncil"
       target="_blank"
       rel="noreferrer"
       aria-label="Facebook"
