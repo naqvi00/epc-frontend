@@ -73,6 +73,9 @@ import PowertyManagment from "./pages/PovertyManagment"
 import WomenEmpowerment from "./pages/WomenEmpowermet"
 import AdminPovertyManagement from "./pages/admin/AdminPovertyManagement"
 import AdminWomenEmpowerment from "./pages/admin/AdminWomenEmpowerment"
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfUse from './pages/TermsOfUse'
+import Disclaimer from './pages/Disclaimer'
 
 
 export default function App() {
@@ -134,7 +137,9 @@ export default function App() {
          <Route path="/women-empowerment" element={<WomenEmpowerment/>} />
         <Route path="/membership" element={<Membership/>} />
         <Route path="/support" element={<SupportLanding />} />
-
+        <Route path="/privacy" element={<PrivacyPolicy/>} />
+        <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/disclaimer" element={<Disclaimer/>} />
         <Route path="/contact" element={<Contact />} />
         
 
