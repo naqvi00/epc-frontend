@@ -47,7 +47,7 @@ const categories: MediaCategory[] = [
     enabled: true,
 
     // ACTIVE YOUTUBE VIDEO FOR EPC EVENTS
-    videoUrl: "https://www.youtube.com/embed/J7Ub5BHVxJ4",
+    videoUrl: "https://youtu.be/_x1DTsmkTco",
 
     mainImage: {
       id: "ev-main",
