@@ -109,22 +109,24 @@ export default function Contact() {
                     <Mail className="mt-0.5 h-4 w-4 text-slate-600" />
                     <div>
                       <div className="font-semibold text-slate-900">General enquiries</div>
-                      <div className="text-slate-700">info@eurasiapolicycouncil.org</div>
+                      <div className="text-slate-700">info@epclondon.org</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-4 w-4 text-slate-600" />
                     <div>
                       <div className="font-semibold text-slate-900">Media & press</div>
-                      <div className="text-slate-700">press@eurasiapolicycouncil.org</div>
+                      <div className="text-slate-700">media@epclondon.org</div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="mt-0.5 h-4 w-4 text-slate-600" />
                     <div>
-                      <div className="font-semibold text-slate-900">Education programmes</div>
-                      <div className="text-slate-700">education@eurasiapolicycouncil.org</div>
-                    </div>
+                      <div className="font-semibold text-slate-900">Management Team </div>
+                      <div className="text-slate-700">shabnam@epclondon.org</div>
+                     <div className="text-slate-700">dabachowdhury@epclondon.org</div>
+                     <div className="text-slate-700">epc@epclondon.org</div>
+                  </div>
                   </div>
                 </div>
               </div>
