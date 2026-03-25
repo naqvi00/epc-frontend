@@ -180,7 +180,7 @@ export default function Contact() {
                     </div>
 
                     <div className="mt-4 rounded-xl border border-brand-line bg-brand-mist p-3 text-xs text-slate-600">
-                      Map embed placeholder — add Google Maps iframe or coordinates later.
+                       Embed Map will be uplod soon.
                     </div>
                   </div>
                 ))}
