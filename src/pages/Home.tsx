@@ -161,27 +161,10 @@ function FeaturedLaunchCard() {
   const [expanded, setExpanded] = useState(false);
 
   const fullText =
-    "The Eurasia Policy Council (EPC) is an independent think tank 
-based in London, dedicated to promoting sustainable development 
-and regional cooperation across Central Asia. We bring together 
-governments, policymakers, academics, industry leaders, and civil 
-society to foster meaningful dialogue and drive lasting change in 
-the region. Our work is centered around three core pillars — 
-Climate Change, Education, and Business & Investment — through 
-which we conduct in-depth research, develop actionable policy 
-recommendations, and support sustainable growth and prosperity. 
-We believe that a stable, knowledge-driven, and environmentally 
-responsible Eurasia is not only possible but essential for the 
-future of the region and the world. At EPC, we are committed 
-to turning policy into progress — one conversation at a time.";
+    "The Eurasia Policy Council (EPC) is an independent think tank based in London, dedicated to promoting sustainable development and regional cooperation across Central Asia. We bring together governments, policymakers, academics, industry leaders, and civil society to foster meaningful dialogue and drive lasting change in the region. Our work is centered around three core pillars — Climate Change, Education, and Business & Investment — through which we conduct in-depth research, develop actionable policy recommendations, and support sustainable growth and prosperity. We believe that a stable, knowledge-driven, and environmentally responsible Eurasia is not only possible but essential for the future of the region and the world. At EPC, we are committed to turning policy into progress — one conversation at a time .";
 
   const shortText =
-    "The Eurasia Policy Council (EPC) is an independent think tank 
-based in London, dedicated to promoting sustainable development 
-and regional cooperation across Central Asia. We bring together 
-governments, policymakers, academics, industry leaders, and civil 
-society to foster meaningful dialogue and drive lasting change in 
-the region.";
+    "The Eurasia Policy Council (EPC) is an independent think tank based in London, dedicated to promoting sustainable development and regional cooperation across Central Asia. We bring together governments, policymakers, academics, industry leaders, and civil society to foster meaningful dialogue and drive lasting change in the region.";
 
   return (
     <div className="rounded-2xl border border-white/15 bg-white/5 p-6 shadow-card">
