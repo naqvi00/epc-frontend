@@ -18,7 +18,7 @@ import clsx from "clsx";
 
 import { brand, sampleInsights, topics, regions } from "../content/site";
 import StatsOnView from "../components/home/StatsOnView";
-import mainPic from "../assets/group.png"
+import mainPic from "../assets/30.JPG"
 /* =========================
    TYPES + CONSTANTS
 ========================= */
@@ -161,10 +161,27 @@ function FeaturedLaunchCard() {
   const [expanded, setExpanded] = useState(false);
 
   const fullText =
-    "The Eurasia Policy Council has been proudly launched at the iconic House of Lords, within the historic UK Parliament in London; marking a bold new chapter in international dialogue, leadership, and policy innovation across Eurasia.\n\nFrom one of the world’s most distinguished parliamentary platforms, a powerful voice for collaboration, diplomacy, and forward-thinking policy has officially emerged.";
+    "The Eurasia Policy Council (EPC) is an independent think tank 
+based in London, dedicated to promoting sustainable development 
+and regional cooperation across Central Asia. We bring together 
+governments, policymakers, academics, industry leaders, and civil 
+society to foster meaningful dialogue and drive lasting change in 
+the region. Our work is centered around three core pillars — 
+Climate Change, Education, and Business & Investment — through 
+which we conduct in-depth research, develop actionable policy 
+recommendations, and support sustainable growth and prosperity. 
+We believe that a stable, knowledge-driven, and environmentally 
+responsible Eurasia is not only possible but essential for the 
+future of the region and the world. At EPC, we are committed 
+to turning policy into progress — one conversation at a time.";
 
   const shortText =
-    "The Eurasia Policy Council has been proudly launched at the iconic House of Lords, within the historic UK Parliament in London; marking a bold new chapter in international dialogue, leadership, and policy innovation across Eurasia.";
+    "The Eurasia Policy Council (EPC) is an independent think tank 
+based in London, dedicated to promoting sustainable development 
+and regional cooperation across Central Asia. We bring together 
+governments, policymakers, academics, industry leaders, and civil 
+society to foster meaningful dialogue and drive lasting change in 
+the region.";
 
   return (
     <div className="rounded-2xl border border-white/15 bg-white/5 p-6 shadow-card">
@@ -172,7 +189,7 @@ function FeaturedLaunchCard() {
       <div className="relative overflow-hidden rounded-xl border border-white/10">
        <img
   src={mainPic}
-  alt="Eurasia Policy Council launch at the House of Lords"
+  alt="Eurasia Policy Council at the House of Commons"
   className="h-48 w-full object-cover md:h-56"
   loading="lazy"
 />
@@ -185,7 +202,7 @@ function FeaturedLaunchCard() {
       </div>
 
       <h2 className="mt-4 font-heading text-xl font-semibold text-white">
-        Eurasia Policy Council Launch at the House of Lords
+        Eurasia Policy Council at the House of Commons
       </h2>
 
       <p className="mt-2 whitespace-pre-line font-body text-sm leading-6 text-white/80">
