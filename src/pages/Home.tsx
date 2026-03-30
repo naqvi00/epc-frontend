@@ -198,7 +198,7 @@ function FeaturedLaunchCard() {
       </button>
 
       <div className="mt-5 flex items-center justify-between">
-        <p className="text-xs text-white/60">Updated 2026-02-25</p>
+        <p className="text-xs text-white/60">Updated 2026-03-29</p>
 
         <Link
           to="/publications"
