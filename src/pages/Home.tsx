@@ -1,7 +1,4 @@
 
-
-
-
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -18,7 +15,7 @@ import clsx from "clsx";
 
 import { brand, sampleInsights, topics, regions } from "../content/site";
 import StatsOnView from "../components/home/StatsOnView";
-import mainPic from "../assets/30.JPG"
+import mainPic from "../assets/30.png"
 /* =========================
    TYPES + CONSTANTS
 ========================= */
