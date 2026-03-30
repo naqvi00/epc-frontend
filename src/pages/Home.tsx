@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import {partners} from "../components/home/PartnersLogo";
 import {
   ArrowRight,
   Calendar,
@@ -592,16 +593,21 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
-              {Array.from({ length: 12 }).map((_, idx) => (
-                <div
-                  key={idx}
-                  className="flex h-16 items-center justify-center rounded-xl border border-brand-line bg-brand-mist text-xs text-slate-500"
-                >
-                  Logo {idx + 1}
-                </div>
-              ))}
-            </div>
+                 <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+  {partners.map((partner) => (
+    <div
+      key={partner.name}
+      className="flex h-16 items-center justify-center rounded-xl 
+      border border-brand-line bg-brand-mist p-3"
+    >
+      <img
+        src={partner.logo}
+        alt={partner.name}
+        className="max-h-10 max-w-full object-contain"
+      />
+    </div>
+  ))}
+</div>
           </div>
         </div>
       </section>
