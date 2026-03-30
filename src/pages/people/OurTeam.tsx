@@ -16,7 +16,9 @@ import Moon from "../../assets/moon.png"
 import Chen from "../../assets/chen.jpeg"
 import Raza from "../../assets/raza.jpeg"
 import mohamed from "../../assets/mohamed.png"
-// import olga from "../../assets/olga.png"
+  // import olga from "../../assets/olga.png"
+import Dech from "../../assets/exper1.jpeg"
+import ora from "../../assets/exper2.jpeg"
 import gevorg from "../../assets/melikyan.jpeg"
 import belaKogan from "../../assets/bela.jpeg"
 import garethStamp from "../../assets/stamp.jpeg"
@@ -375,6 +377,31 @@ export default function Governance() {
       ),
       tags: ['Cultural Policy', 'Media Strategy', 'Cultural Diplomacy', 'Partnerships'],
     },
+
+    {
+      name: 'Margaret Dechenaux',
+      image: Dech,
+       title: 'Expert',
+  location: 'France',
+  short: 'Cultural entrepreneur and artistic director, founder of the International Institute of World Music (IIMM), specialising in intercultural cooperation through the arts and intangible cultural heritage.',
+  long: clampWords(
+    'Margaret Dechenaux is a French cultural entrepreneur and artistic director, internationally recognised as an expert in intercultural cooperation through the arts, with nearly 25 years of experience fostering dialogue between cultures worldwide. From 2000 to 2014, she led Échanges Culturels en Méditerranée (ECUME), coordinating a network of higher arts education institutions across the Mediterranean to promote collaboration, mobility, and excellence. During this period, she also created 12 editions of the itinerant festival Sacred Songs of the Mediterranean. In 2015, she founded the International Institute of World Music and Dance (IIMM), which has become a leading international centre for the preservation, transmission, and innovation of traditional and scholarly music. Under her leadership, the IIMM offers 17 certified programmes and welcomes over 500 students from 15 countries. The institute holds Qualiopi certification from the French Ministry of Labour and Vocational Training and benefits from Erasmus+ support (2024–2026). It is the only French organisation referenced in UNESCO\'s 2026–2030 guidelines and the only institution in the South of France undergoing accreditation with UNESCO. Margaret was appointed by the Tunisian Ministry of Culture to the Scientific Committee of the Centre for Arab and Mediterranean Music and serves as a consultant for the French Departmental Council of Bouches-du-Rhône. She served as President of the Jury of the International Lazgi Festival (Uzbekistan, 2024) and represented the IIMM at the World Forum on Urban Culture and Artificial Intelligence in October 2025.',
+    95,
+  ),
+  tags: ['Cultural Entrepreneurship', 'Intangible Heritage', 'Artistic Diplomacy', 'Intercultural Cooperation', 'Music & Dance'],
+},
+        {
+      name: 'Ora Lazic',
+      image: ora,
+      title: 'Expert',
+  location: 'UK / Central Asia',
+  short: 'Founder of Eurasia Industry Expert Ltd, specialising in energy transition, critical minerals, and climate solutions partnerships with Central Asia and the Caspian region.',
+  long: clampWords(
+    'Ora Lazic is the founder of Eurasia Industry Expert Ltd, a UK-based firm dedicated to building high-quality energy transition, critical minerals, climate solutions and education partnerships with Central Asia and the wider Caspian region. With more than 20 years of experience in the international energy industry, commodity trading advisory services and consulting, she has dedicated her career to making sense of energy markets, policy and data, building essential market intelligence and critical insights. Over the past 7 years, Ora has been researching energy transition, resource sustainability and critical minerals investment and policy developments—expertise she is passionate about bringing to foster international cooperation and development. Ora advises international agencies, governments and businesses to expand and elevate Central Asia policy and scientific exchange and dialogue. She holds a BA in English and Education from Kazakhstan and an MA in International Relations and Globalisation from the UK.',
+    95,
+  ),
+  tags: ['Energy Transition', 'Critical Minerals', 'Climate Solutions', 'Central Asia', 'Policy Strategy'],
+},
   ]
 
   return (
