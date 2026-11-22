@@ -147,61 +147,12 @@ export const officeLocations = [
     email: 'info@epclondon.org',
   },
   {
-    country: 'Iran',
-    city: 'Tehran',
-    address: '.....',
-    phone: '+...',
+    country: 'Norway',
+    city: 'Drammen',
+    address: 'Underlia 253, 3021 Drammen Norway',
     email: 'info@epclondon.org',
   },
-  {
-    country: 'Azerbaijan',
-    city: 'Baku',
-    address: '........',
-    phone: '+....',
-    email: 'info@epclondon.org',
-  },
-  {
-    country: 'Turkey',
-    city: 'Istanbul',
-    address: '......',
-    phone: '+...',
-    email: 'info@epclondon.org',
-  },
-  {
-    country: 'Kazakhstan',
-    city: 'Astana',
-    address: '......',
-    phone: '+....',
-    email: 'info@epclondon.org',
-  },
-  {
-    country: 'Kyrgyzstan',
-    city: 'Bishkek',
-    address: '......',
-    phone: '+....',
-    email: 'info@epclondon.org',
-  },
-  {
-    country: 'Turkmenistan',
-    city: 'Ashgabat',
-    address: '.......',
-    phone: '+....',
-    email: 'info@epclondon.org',
-  },
-  {
-    country: 'Tajikistan',
-    city: 'Dushanbe',
-    address: '.......',
-    phone: '+....',
-    email: 'info@epclondon.org',
-  },
-  {
-    country: 'Uzbekistan',
-    city: 'Tashkent',
-    address: '........',
-    phone: '+....',
-    email: 'info@epclondon.org',
-  },
+
 ]
 
 export const sampleInsights = [
