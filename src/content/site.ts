@@ -3,7 +3,7 @@ export type NavItem = {
   href?: string
   children?: { label: string; description?: string; href: string }[]
 }
-
+ 
 export const brand = {
   orgName: 'From Strategy to Statecraft',
   shortName: 'EPC',
