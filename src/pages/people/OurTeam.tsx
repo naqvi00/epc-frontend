@@ -6,7 +6,7 @@ import kamal from "../../assets/kamal.png"
 import laura from "../../assets/Laura.png"
 import Saeed from "../../assets/saeed.jpeg"
 import Samir from "../../assets/samir.jpeg"
-import Fouzia from "../../assets/fouzia.jpeg"
+import Fouzia from "../../assets/fouzia.jpeg" 
 import Daba from "../../assets/daba.jpeg"
 import Shabnam from '../../assets/shabnam.jpeg'
 import Berunity from "../../assets/Berunity.png"
