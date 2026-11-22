@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import PageHeader from '../../components/ui/PageHeader'
 import clsx from 'clsx'
 import { ShieldCheck, Users, Sparkles, GraduationCap } from 'lucide-react'
-import kamal from "../../assets/kamal.png"
+import kamal from "../../assets/kamal.png" 
 import laura from "../../assets/Laura.png"
 import Saeed from "../../assets/saeed.jpeg"
 import Samir from "../../assets/samir.jpeg"
