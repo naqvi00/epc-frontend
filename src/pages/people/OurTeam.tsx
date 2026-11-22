@@ -16,6 +16,9 @@ import Moon from "../../assets/moon.png"
 import Chen from "../../assets/chen.jpeg"
 import Raza from "../../assets/raza.jpeg"
 import mohamed from "../../assets/mohamed.png"
+import Redion from "../../assets/1.png"
+import Glenn from "../../assets/2.png"
+import Ken from "../../assets/3.png"
   // import olga from "../../assets/olga.png"
 import Dech from "../../assets/exper1.jpeg"
 import ora from "../../assets/exper2.jpeg"
@@ -179,6 +182,30 @@ export default function Governance() {
       ),
       tags: ['Diplomacy', 'Public Affairs', 'Geopolitics'],
     },
+        {
+      name: 'Dr. Glenn Agung Hole',
+      image: Glenn,
+      title: 'Advisory Council',
+      location: 'Norway',
+      short: 'Dr. Glenn Agung Hole is a Norwegian institutional economist, Associate Professor, author, and geopolitical commentator whose work examines how institutional capacity shapes strategic autonomy, economic resilience,',
+      long: clampWords(
+        'and the ability of states and organisations to navigate geopolitical change. He is an Associate Professor at the University of South-Eastern Norway. His academic and professional work combines institutional economics, political economy, strategic development, and geopolitical analysis, with a particular focus on how institutions influence economic and strategic outcomes in an increasingly complex international environment. Dr. Hole has held a range of international academic appointments across Europe, Africa, and Central Asia. He is a Visiting Professor at the University of Dar es Salaam Business School in Tanzania, Mother Teresa University in North Macedonia, and the University of Shkodra “Luigj Gurakuqi” in Albania. He also serves as a Distinguished Visiting Professor at the Université Nationale de la Décentralisation and UCKIN in the Democratic Republic of the Congo, participates in Erasmus teaching cooperation with **University “Kadri Zeka” in Kosovo, and is an Honorary Professor at Sarsen Amanzholov East Kazakhstan University. Beyond academia, Dr. Hole is actively engaged in international policy and geopolitical discourse. He is an invited contributing author to Tirana Observatory, published by the Albanian Institute for International Studies, and serves on the Advisory Board of IEMA. He writes regularly for the Norwegian financial press and contributes to international publications addressing economics, geopolitics, institutions, and global affairs. His international analytical work has appeared in publications including Geopolitika and France's Revue Conflits, among other outlets. Through his writing and public commentary, he examines contemporary geopolitical developments through the lens of institutional capacity, economic resilience, strategic autonomy, and long-term political and economic change. Dr. Hole is also the founder of the Institutional Capital Project, an initiative focused on advancing understanding of the role institutions play in economic development, resilience, and strategic capacity. His combination of academic research, international teaching, institutional economics, and geopolitical commentary provides a multidisciplinary perspective on global affairs and the evolving relationship between institutions, economies, and geopolitical power.',
+        300,
+      ),
+      tags: ['Institutional Economist ', 'Geopolitical Commentator', 'Associate Professor'],
+    },
+      {
+      name: 'Ken Moriyasu',
+      image: Ken,
+      title: 'Advisory Council',
+      location: 'Japan',
+      short: 'Ken Moriyasu is a senior fellow at the Hudson Institute, where he focuses on Greater Asia the vast Eurasian region stretching from Turkey to Japan and its growing importance as an arena of strategic competition among the',
+      long: clampWords(
+        'United States, China, and Russia. Before joining Hudson Institute, Moriyasu spent much of his career as a foreign correspondent for the Japanese newspaper Nikkei, with international postings in Washington, Cairo, Beijing, Dalian, and New York. His extensive reporting career has given him firsthand experience covering political, economic, and geopolitical developments across some of the world's most strategically important capitals. Moriyasu was also part of the core team involved in Nikkei's 2015 acquisition of the Financial Times, one of the most significant developments in the international media industry. Born in Chicago, Moriyasu spent ten years of his early life in Camberley, Surrey, United Kingdom, before studying journalism at Sophia University in Tokyo, where he was also a member of the university's American football team. Throughout his journalism career, Moriyasu has reported from the corridors of power in **Tokyo, Washington, and Beijing**, as well as from the oceans aboard aircraft carriers. In 2006, he conducted the final interview with former Israeli Prime Minister **Ariel Sharon** before Sharon suffered a stroke. Drawing on decades of international reporting and experience across Asia, North America, Europe, and the Middle East, Moriyasu provides analysis on Greater Asia, great-power competition, U.S.–China relations, Russia, Japan, and the changing geopolitical landscape of Eurasia.',
+        300,
+      ),
+      tags: ['Senior Fellow ', 'Geopolitical Analyst '],
+    },
     {
       name: 'Dr. Saeed Samani Majd',
       image: Saeed,
@@ -328,6 +355,18 @@ export default function Governance() {
         80,
       ),
       tags: ['International Relations', 'Diplomacy', 'Security'],
+    },
+       {
+      name: 'Dr. Redion Luli',
+      image: Redion,
+      title: 'Expert',
+      location: 'Albania',
+      short: 'Dr. Redion Luli is an expert and lecturer of International and European Law, Coordinator of the Albanian Young Academy of Sciences. His academic and research interests extend to the Balkan region,',
+      long: clampWords(
+        'Russian Studies, China, and Central Asia, with a particular focus on international relations, regional security, geopolitical developments, European integration, and the evolving legal and political dynamics of these regions.',
+        80,
+      ),
+      tags: ['Analyst'],
     },
     {
       name: 'Dr. Pravesh Kumar Gupta',
